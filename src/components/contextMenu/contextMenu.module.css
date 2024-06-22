@@ -1,0 +1,15 @@
+.contextMenuMainContainer{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    cursor: default;
+    color: inherit;
+}
+
+.optionsButton{
+    background-color: transparent;
+    border: none;
+    padding: 0.2rem 0.4rem;
+    font-size: inherit;
+    color: inherit;
+}

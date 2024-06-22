@@ -1,0 +1,49 @@
+.mainWrapper{
+    min-height: 90svh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.window{
+    width: 95%;
+    max-width: 27rem;
+    /* margin: 0px 2rem; */
+    margin-top: 8rem;
+}
+
+.actionButtonsConatainer{
+    text-align: right;
+    margin-bottom: 2rem;
+}
+
+.actionButtonsConatainer>button{
+    margin-left: 1.5rem;
+}
+
+/*---------- INPUTS --------*/
+.inputContainer{
+    margin-bottom: 1.2rem;
+}
+
+.inputContainer>label{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.inputContainer>input,.inputContainer>textarea{
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+}
+
+.inputContainer>textarea{
+    height: 6rem;
+}
+
+.inputContainer.required label::after{
+    content: "*";
+    color: red;
+}
+

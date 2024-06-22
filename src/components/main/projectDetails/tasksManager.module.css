@@ -1,0 +1,50 @@
+.taskManagerMainWrapper{
+    margin-top: 2.5rem;
+}
+
+.taskManagerMainWrapper h2{
+    margin-bottom: 0.5rem;
+    font-size: x-large;
+}
+
+.tasksList{
+    max-width: 50rem;
+    background-color: rgb(73, 73, 73);
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.taskItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0px;
+    border-bottom: 2px solid rgba(21, 22, 25, 0.6);
+}
+
+.taskItem:last-child{
+    border: none;
+}
+
+.taskItem>p{
+    display: inline-block;
+    margin: 0px;
+}
+
+.taskInputContainer{
+    margin-bottom: 2rem;
+}
+
+.taskInput{
+    width: 100%;
+    max-width: 30rem;
+    margin-right: 1rem;
+    box-sizing: border-box;
+}
+
+.taskInputContainer>button{
+    font-size: small;
+    margin: 1rem 0px;
+}

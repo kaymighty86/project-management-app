@@ -1,0 +1,31 @@
+.mainWrapper{
+    position: relative;
+    box-sizing: border-box;
+    padding: 3.5rem 2rem 0px 2rem;
+}
+
+.projectDetailsSection{
+    border-bottom: 2px solid rgb(73, 73, 73);
+}
+
+.projectDetailsSection h1{
+    margin-bottom: 0px;
+    font-size: xx-large;
+}
+
+.projectDetailsSection p{
+    font-size: small;
+    margin-top: 0.5rem;
+}
+
+.dueDate{
+    color: rgb(153, 157, 163);
+}
+
+.optionsButtonWrapper{
+    position: absolute;
+    top: 5rem;
+    right: 3rem;
+    color: white;
+    font-size: x-large;
+}

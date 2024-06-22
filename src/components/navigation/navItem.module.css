@@ -1,0 +1,33 @@
+.navItem{
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0.5rem 0px;
+    font-size: medium;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navItem:hover{
+    font-weight: bold;
+}
+
+.navItem.selected{
+    background-color: white;
+    /* border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem; */
+    color: black;
+}
+
+.navName{
+    padding: 0.3rem 0.8rem 0.3rem 0.3rem;
+    flex-grow: 2;
+}
+
+.contextMenuButton{
+    color: white;
+    margin-right: 0.5rem;
+}

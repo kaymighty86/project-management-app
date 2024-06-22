@@ -1,0 +1,35 @@
+.mainSection{
+    position: relative;
+}
+
+.appIcon{
+    width: 6rem;
+    height: auto;
+}
+
+.defaultUIContainer{
+    min-height: 90svh;
+}
+
+.defaultUIWindow{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.defaultUIWindow>h1{
+    font-size: x-large;
+}
+
+.defaultUIWindow>p{
+    font-size: medium;
+    color: lightgray;
+}
+
+.defaultUIWindow>.createProjectBtn{
+    margin-top: 2rem;
+    font-size: medium;
+}

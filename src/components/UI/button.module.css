@@ -1,0 +1,49 @@
+.buttonStyle{
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.buttonStyle:hover{
+    outline-width: 3px;
+}
+
+.buttonStyle:active{
+    outline-width: 2px;
+}
+
+.lightGray{
+    background-color: rgb(237, 233, 233);
+    color: rgb(30, 29, 29);
+    outline: 2px solid rgb(87, 84, 90);
+    font-weight: bold;
+}
+.lightGray:hover{
+    background-color: rgb(221, 235, 241);
+}
+.lightGray:active{
+    outline: none;
+}
+
+.darkGray{
+    background-color: rgb(14, 14, 14);
+    color: white;
+    outline: 2px solid lightblue;
+}
+.darkGray:active{
+    background-color: rgb(27, 27, 27);
+}
+
+.transparent{
+    background-color: transparent;
+    border: none;
+    outline: 2px solid rgb(170, 200, 243);
+    color: rgb(170, 200, 243);
+}
+.transparent:hover{
+    outline-width: 3px;
+}
+.transparent:active{
+    outline: none;
+}

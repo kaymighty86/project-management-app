@@ -1,0 +1,32 @@
+
+.optionsList{
+    display: inline-block;
+    position: absolute;
+    top: 0.9rem;
+    z-index: 10;
+    width: 10rem;
+    margin: 0px;
+    padding: 0.2rem;
+    font-weight: normal;
+    font-size: small;
+    background-color: white;
+    color: rgb(37, 37, 39);
+    border-radius: 0.6rem;
+    box-shadow: 0px 0px 1rem rgb(18, 17, 17);
+}
+
+.optionsList ul{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.optionsList li{
+    padding: 0.3rem 1.5rem;
+    cursor: pointer;
+}
+
+.optionsList li:hover{
+    font-weight: bold;
+    color: coral;
+}

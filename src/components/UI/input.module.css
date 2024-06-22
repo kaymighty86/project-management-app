@@ -1,0 +1,26 @@
+.inputStyle{
+    font-family: 'Poppins', sans-serif;
+    font-size: small;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 2px solid rgb(222, 222, 222);
+    background-color: rgba(255, 255, 255, 0.25);
+    color: rgb(215, 215, 215);
+    border-top-right-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
+    color-scheme: dark;/*this changes the color of the element default icons to white (since we stated that we're using a dark theme)*/
+}
+
+.inputStyle:focus{
+    background-color: white;
+    color: rgb(56, 56, 56);
+    accent-color: rgb(56, 56, 56);
+    border-color: rgb(139, 178, 216);
+    outline: none;
+    color-scheme: light;
+}
+
+.inputStyle::placeholder{
+    font-style: italic;
+    color: rgba(213, 213, 213, 0.4)
+}
