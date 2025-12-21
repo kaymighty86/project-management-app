@@ -25,6 +25,9 @@
 .navName{
     padding: 0.3rem 0.8rem 0.3rem 0.3rem;
     flex-grow: 2;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contextMenuButton{

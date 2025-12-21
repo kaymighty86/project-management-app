@@ -1,7 +1,8 @@
 import Styles from './contextMenu.module.css';
-import { useState, useRef} from 'react';
+import { useState, useRef, useEffect} from 'react';
 // import { createPortal } from 'react-dom';
-import ContextMenuList from './contextMenuList.jsx';
+import {ContextMenuList} from './contextMenuList.jsx';
+import { FaEllipsisVertical } from "react-icons/fa6";
 
 // let val3 = 0;
 
@@ -13,29 +14,38 @@ import ContextMenuList from './contextMenuList.jsx';
 const ContextMenu = ({options, className}) => {
     const [menuVisible, setMenuVisible] = useState(false);
     const [UIPosition, setUIPosition] = useState({x: 0, y: 0})
+    const contextMenuRef = useRef();
     const triggerButtonRef = useRef();
     // const menuRef = useRef();
     
     const classes = `${Styles.optionsButton} ${className != undefined? className : ""}`;
-    
-    function handleMenuState(){
-        //only do anything if menulist is not currently on
-        if(!menuVisible){
+
+    useEffect(()=>{
+        //reposition the menu after its visible
+        if(menuVisible){
             const triggerBtnRect = triggerButtonRef.current.getBoundingClientRect();
+
             setUIPosition({
-                x: triggerBtnRect.x + 160 < document.body.scrollWidth? triggerBtnRect.x : triggerBtnRect.x - 150, //if the size of the box will not overflow the visble viewport of the page, use the boundingRect value, else position the menu at the left side
-                y: triggerBtnRect.y
+                x: triggerBtnRect.x < window.innerWidth / 2? triggerBtnRect.x : triggerBtnRect.x - (contextMenuRef.current.getBoundingClientRect().width - triggerBtnRect.width), //if the size of the box will not overflow the visble viewport of the page, use the boundingRect value, else position the menu at the left side
+                y: triggerBtnRect.y < window.innerHeight / 2? triggerBtnRect.y : triggerBtnRect.y - (contextMenuRef.current.getBoundingClientRect().height)
             });
+        }
+    }, [menuVisible]);
     
+    function handleMenuOpen(){
+        if(!menuVisible){
             setMenuVisible(true);
+        }
+        else{
+            setMenuVisible(false);
         }
     }
 
     return (
         <div className={Styles.contextMenuMainContainer}>
-            <button ref={triggerButtonRef} className={classes} onClick={handleMenuState}><i className="fa-solid fa-ellipsis-vertical"></i></button>
+            <button ref={triggerButtonRef} className={classes} onClick={handleMenuOpen}><FaEllipsisVertical /></button>
             {
-                menuVisible && <ContextMenuList itemsList = {options} UIPosition = {UIPosition} onOOBClicked={()=>{setMenuVisible(false)}}/>
+                menuVisible && <ContextMenuList ref={contextMenuRef} itemsList = {options} UIPosition = {UIPosition} closeMenu={()=>{setMenuVisible(false)}}/>
             }
         </div>
     );

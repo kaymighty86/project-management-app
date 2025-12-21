@@ -6,9 +6,9 @@ import appIcon from "../../assets/app-icon.png";
 
 import Button from "../UI/button.jsx";
 import ProjectDetailsView from "./projectDetails/projectDetailsView.jsx";
-import NewProjectUI from "./newProject/newProjectUI.jsx";
+import ProjectForm from "./projectDetails/ProjectForm.jsx";
 
-const MainSection = forwardRef(({UIState, selectedProject, onProjectUpdated, onCreateNewProject, onDeleteProject}, ref)=>{
+const MainSection = forwardRef(function MainSection ({UIState, selectedProject, onProjectUpdated, onCreateNewProject, onDeleteProject}, ref){
 
     const [currentUIState, setUIState] = useState(UIState);
 
@@ -66,10 +66,13 @@ const MainSection = forwardRef(({UIState, selectedProject, onProjectUpdated, onC
             currentUI = defaultUI;
         break;
         case mainSectionStates.projectCreation: 
-            currentUI = <NewProjectUI onSubmit={projectCreationRequesthandler} onCancel={()=>ref.current.changeUI(mainSectionStates.default)}/>;
+            currentUI = <ProjectForm onSubmit={projectCreationRequesthandler} onCancel={()=>ref.current.changeUI(mainSectionStates.default)}/>;
         break;
         case mainSectionStates.projectView: 
-            currentUI = <ProjectDetailsView ref={projectDetailsViewerRef} project={selectedProject} onProjectUpdated={projectUpdateHandler} onDelete={projectDeleteHandler}/>;
+            currentUI = <ProjectDetailsView ref={projectDetailsViewerRef} project={selectedProject} onProjectUpdated={projectUpdateHandler} editHandler={() => ref.current.changeUI(mainSectionStates.projectEdit)} deleteHandler={projectDeleteHandler}/>;
+        break;
+        case mainSectionStates.projectEdit: 
+            currentUI = <ProjectForm projectData={selectedProject} onSubmit={projectUpdateHandler} onCancel={() => ref.current.changeUI(mainSectionStates.projectView, selectedProject)}/>;
         break;
     }
 

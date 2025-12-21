@@ -3,7 +3,7 @@ import Styles from "./projectDetailsView.module.css";
 import TasksManager from "./tasksManager.jsx";
 import ContextMenu from "../../contextMenu/contextMenu.jsx";
 
-const ProjectDetailsView = forwardRef(function ProjectDetailsView({project, onProjectUpdated, onDelete}, ref){
+const ProjectDetailsView = forwardRef(function ProjectDetailsView({project, onProjectUpdated, editHandler, deleteHandler}, ref){
 
     const [currentProject, setCurrentProject] = useState(project);
 
@@ -16,9 +16,13 @@ const ProjectDetailsView = forwardRef(function ProjectDetailsView({project, onPr
     });
 
     //extract the date components to enable us display it however we want
-    const month = new Date(currentProject.dueDate).toLocaleString("en-US", { month: "short" });//this function return the date based on the langage and format of the date. In this case it will return the full name of the month
-    const day = new Date(currentProject.dueDate).toLocaleString("en-US", { day: "2-digit" });///Same as above. In this case it will return the day of the month (number).
-    const year = new Date(currentProject.dueDate).getFullYear();
+    const splitDate = currentProject.dueDate.split("-");
+    const date = new Date(Date.UTC(splitDate[0], splitDate[1] - 1, splitDate[2], 0, 0, 0));
+    
+    const month = date.toLocaleString("en-US", { month: "short" });//this function return the date based on the langage and format of the date. In this case it will return the full name of the month
+    const day = date.toLocaleString("en-US", { day: "2-digit" });///Same as above. In this case it will return the day of the month (number).
+    const year = date.toLocaleString("en-US", { year: "numeric" });
+
 
     const tasksUpdateHandler = (updatedTasks)=> {
         //TASKS UPDATED FOR THE CURRENT PROJECT.
@@ -31,8 +35,12 @@ const ProjectDetailsView = forwardRef(function ProjectDetailsView({project, onPr
         // currentProject.tasks = updatedTasks;
     }
 
-    const deletProject = () => {
-        onDelete(project.projectId);
+    function deletProject(){
+        deleteHandler(project.projectId);
+    }
+
+    function editProject() {//!!!Work in progress
+        editHandler()
     }
 
     //----------------------------------------
@@ -40,10 +48,8 @@ const ProjectDetailsView = forwardRef(function ProjectDetailsView({project, onPr
     const contextMenuItems = [
         {
             name: "Delete",
-            onClick: () => {
-                deletProject();
-            }
-        }
+            onClick: deletProject
+        },
     ]
     //----------------------------------------
 
@@ -51,6 +57,7 @@ const ProjectDetailsView = forwardRef(function ProjectDetailsView({project, onPr
         <div className={Styles.mainWrapper}>
             <div className={Styles.projectDetailsSection}>
                 <h1 className={Styles.projectName}>{currentProject.projectName}</h1>
+                {/* <p className={Styles.dueDate}>{`Due: ${date}`}</p> */}
                 <p className={Styles.dueDate}>{`Due: ${month} ${day}, ${year}`}</p>
                 <p className={Styles.projectDescription}>{currentProject.description}</p>
                 <div className={Styles.optionsButtonWrapper}>

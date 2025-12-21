@@ -1,9 +1,9 @@
 const defaultProjects = [
     {
       projectId: 'project0',
-      projectName: 'Project Arion',
-      description: 'Templete project of the highest order',
-      dueDate: '2023-11-31',
+      projectName: 'Demo Project 1',
+      description: 'Demo project of the highest order',
+      dueDate: '2024-11-2',
       tasks: [
         'work on task a to c',
         'refer to task g for f'
@@ -11,22 +11,12 @@ const defaultProjects = [
     },
     {
       projectId: 'project1',
-      projectName: 'Project Epsilon',
-      description: 'Templete project of the second highest order',
-      dueDate: '2024-01-15',
+      projectName: 'Demo Projec 2',
+      description: 'Demo project of the second highest order',
+      dueDate: '2024-1-15',
       tasks: [
         'work on task alpha to zeta',
         'refer to task mu for omega'
-      ]
-    },
-    {
-      projectId: 'project2',
-      projectName: 'Project Q',
-      description: 'Templete project of the third highest order',
-      dueDate: '2024-03-25',
-      tasks: [
-        'work on task d to t',
-        'refer to task w for x'
       ]
     }
 ]

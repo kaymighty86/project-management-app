@@ -47,7 +47,7 @@ function App() {
     localStorage.setItem('projects', JSON.stringify(data))
   }
 
-  const projectCreationHandler = (newProjectData) => {
+  function projectCreationHandler(newProjectData){
     updateProjectList(prevProjects => {
       const updatedProjectsList = [...prevProjects, newProjectData];
       saveToStorage(updatedProjectsList);
@@ -57,7 +57,7 @@ function App() {
     showProject(newProjectData.projectId);//show the new project as the selected project
   }
   
-  const projectDataUpdateHandler = (updatedProjectData) => {
+  function projectDataUpdateHandler (updatedProjectData){
     updateProjectList(projects => {
       const ArrayIndex = projects.findIndex(project => (project.projectId == updatedProjectData.projectId));
 
@@ -69,9 +69,10 @@ function App() {
 
       return projects;//returns the updated form of the projects array
     });
+    showProject(updatedProjectData.projectId);//show the new project as the selected project
   }
 
-  const projectDeleteHandler = (projectID) => {
+  function projectDeleteHandler (projectID){
     // console.log(projects.findIndex(project => (project.projectId == projectID)));
     updateProjectList(projects => {
       const updatedProjects = [...projects];
@@ -94,13 +95,12 @@ function App() {
   }
   //---------------------------------------------------------------
 
-
   return (
     <>
       {/*through css, this header will only show when viewing from mobile phone*/}
       <header>
         <Button onClick={toggleNavigation}><i className="fa-solid fa-bars"></i></Button>
-        <h1>PROJECT MANAGER APP</h1>
+        <h1>PROJECTS MANAGER</h1>
       </header>
       {createPortal(<NavigationSection visible={navShown} projectList={projects} selectedProjectId={selectedProjectId} onProjectSelect={showProject} onNewProjectButtonClick={showProjectCreationUI} onProjectDelete={projectDeleteHandler} onNavMenuClose={toggleNavigation}/>, document.getElementById('nav-root'))}
       <MainSection ref={mainSectionRef} UIState={mainSectionStates.default} selectedProject={getProject(selectedProjectId)} onProjectUpdated={projectDataUpdateHandler} onCreateNewProject={projectCreationHandler} onDeleteProject={projectDeleteHandler}/>

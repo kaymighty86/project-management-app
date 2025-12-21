@@ -1,4 +1,4 @@
-import Styles from './newProjectUI.module.css';
+import Styles from './ProjectForm.module.css';
 
 import Input from '../../UI/input.jsx';
 import Button from '../../UI/button.jsx';
@@ -7,7 +7,8 @@ import TextArea from '../../UI/textArea.jsx';
 import { useRef } from 'react';
 import { convertDateToString } from '../../../utils/utils.js';
 
-const NewProjectUI = ({onSubmit, onCancel}) => {
+//NOTE:!!! This is a reusable components thats used to create project and edit project details
+export default function ProjectForm({projectData = undefined, onSubmit, onCancel}){
     const nameInputRef = useRef();
     const descriptionInputRef = useRef();
     const dateInputRef = useRef();
@@ -15,14 +16,17 @@ const NewProjectUI = ({onSubmit, onCancel}) => {
     const projectCreationHandler = (event) => {
         event.preventDefault();
 
+        const date = new Date(dateInputRef.current.value)
+        const dueDate_str = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}` //on the month i'm adding 1 because get month returns month digit between 0 - 11 (representing Jan - Dec)
+
         const projectBasicData = {
-            projectId: 'project'+Math.random(),
+            projectId: projectData != undefined? projectData.projectId : 'project'+Math.random(),
             projectName: nameInputRef.current.value,
             description: descriptionInputRef.current.value,
-            dueDate: new Date(dateInputRef.current.value)
+            dueDate: dueDate_str
         }
 
-        console.log(projectBasicData);
+        // console.log(projectBasicData);
 
         onSubmit(projectBasicData);//call this function to pass the parameters up
     }
@@ -57,5 +61,3 @@ const NewProjectUI = ({onSubmit, onCancel}) => {
         </div>
     );
 }
-
-export default NewProjectUI;

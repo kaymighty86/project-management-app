@@ -1,10 +1,15 @@
 import Styles from './navItem.module.css';
 
 import ContextMenu from "../contextMenu/contextMenu.jsx";
+import { PiProjectorScreen } from "react-icons/pi";
 
 const NavItem = ({name, isSelected, onClick, onDelete}) => {
 
     const contextMenuItems = [
+        {
+            name: "Open",
+            onClick: onClick
+        },
         {
             name: "Delete",
             onClick: onDelete
@@ -14,7 +19,7 @@ const NavItem = ({name, isSelected, onClick, onDelete}) => {
     return (
         <div className={`${Styles.navItem} ${isSelected? Styles.selected : ""}`}>
             <div className={Styles.navName} onClick={onClick}>
-                <i className="fa-solid fa-angle-right"></i>{" " + name}
+                <PiProjectorScreen /> {" " + name}
             </div>
 
             <ContextMenu className={Styles.contextMenuButton} options={contextMenuItems}/>
