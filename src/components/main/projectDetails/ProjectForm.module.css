@@ -49,3 +49,16 @@
     color: red;
 }
 
+@media (max-width: 40rem) {
+    .mainWrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 3rem;
+    }
+
+    .window{
+        width: 85%;
+    }
+}
