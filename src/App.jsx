@@ -7,10 +7,10 @@ import MainSection from './components/main/mainSection.jsx';
 import mainSectionStates from './components/main/mainSectionStates.js';
 import Button from './components/UI/button.jsx';
 
-import defaultProjects from './data/defaultProjects.js';
+import {dummyProject} from './utils/utils.js';
 
 function App() {
-  const startingProjects = JSON.parse(localStorage.getItem('projects')) || defaultProjects;
+  const startingProjects = JSON.parse(localStorage.getItem('projects')) || dummyProject();
 
   const [navShown, toggleNavMenu] = useState(false);//this is for when viewing the website in mobile phone
   const [projects, updateProjectList] = useState(startingProjects);
@@ -99,7 +99,7 @@ function App() {
     <>
       {/*through css, this header will only show when viewing from mobile phone*/}
       <header>
-        <Button onClick={toggleNavigation}><i className="fa-solid fa-bars"></i></Button>
+        <Button onClick={toggleNavigation}>=</Button>
         <h1>PROJECTS MANAGER</h1>
       </header>
       {createPortal(<NavigationSection visible={navShown} projectList={projects} selectedProjectId={selectedProjectId} onProjectSelect={showProject} onNewProjectButtonClick={showProjectCreationUI} onProjectDelete={projectDeleteHandler} onNavMenuClose={toggleNavigation}/>, document.getElementById('nav-root'))}

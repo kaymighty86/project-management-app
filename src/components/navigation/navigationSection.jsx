@@ -24,7 +24,7 @@ const NavigationSection = ({visible, projectList, selectedProjectId, onProjectSe
 
     return (
         <div className={`${Styles.navigationSection} ${!visible? Styles.navHidden : ""}`}>
-            <button className={Styles.navCloseButton} onClick={handleCloseNavigation}><i className="fa-solid fa-x"></i></button>
+            <button className={Styles.navCloseButton} onClick={handleCloseNavigation}>X</button>
             <div className={Styles.innerWrapper}>
                 <h1 className={Styles.appTitle}>Projects Manager</h1>
                 <Button className={Styles.newProjectButton} onClick={newProjectButtonClickHandler}><span className={Styles.gradientText}>+ Add Projects</span></Button>
